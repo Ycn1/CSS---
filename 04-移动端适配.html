@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>移动端适配</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		img{
+			width: 40rem;
+			float: left;
+		}
+		h1{
+			font-size: 2rem;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<img src="images/boy.jpg" alt="">
+		<h1>今天是个好天气</h1>
+	</div>
+</body>
+<script type="text/javascript">
+	(function(win ,doc){
+		var oRoot = doc.getElementsByTagName('html')[0];
+		function refreshFontSize(){
+			var iWidth = doc.body.clientWidth || doc.documentElement.clientWidth;
+			var iFontSize = iWidth /10;
+			oRoot.style.fontSize = iFontSize + 'px';
+		}
+		doc.addEventListener('DOMContentLoad',refreshFontSize,false);
+		win.addEventListener('resize',refreshFontSize,false);
+
+	})(window,document)
+</script>
+</html>
