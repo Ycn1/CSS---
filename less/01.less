@@ -1,0 +1,129 @@
+
+
+*{
+	margin: 0;
+	padding: 0;
+}
+@color:#f10 ;
+
+h1{
+	color:@color;
+}
+a:hover{
+	color:@color;
+};
+
+
+@w:200px;
+
+@h:100px;
+@r:30px; 
+
+.box1{
+	width: @w;
+	height: @h;
+	background: #f10;
+	border-width: 2;
+}
+.box2{
+	width: @w;
+	height: @h;
+	background: #f1f;
+	border-radius: @r;
+}
+.border-radius{
+	-o-border-radius: 20px;
+	-webkit-border-radius:20px;
+	-moz-border-radius:20px;
+}
+//有默认值的参数值得函数，当调用的时候不传参的时候默认的为10px
+.border-radius-def(@R:10px){
+	-o-border-radius: @R;
+	-webkit-border-radius:@R;
+	-moz-border-radius:@R;
+}
+.box3{
+	width: @w;
+	height: @h;
+	background: #ccc;
+	.border-radius();
+}
+.box4{
+	width: @w;
+	height: @h;
+	background: #ccc;
+	.border-radius-def(@R:20px);
+}
+.triangle(@_,@wt:10,@c:red){
+	width: @w;
+	height: @h;
+	overflow: hidden;
+	border-width: @wt;
+	border-style: solid;
+}
+.triangle(@_,@wt:10px,@c:red){
+	border-width: @wt;
+	border-color: @c transparent transparent transparent;
+}
+.triangle(@_,@wt:10px,@c:red){
+	border-width: @wt;
+	border-color: transparent  @c transparent transparent;
+}
+.triangle(@_,@wt:10px,@c:red){
+	border-width: @wt;
+	border-color: transparent transparent @c transparent;
+}
+.triangle(@_,@wt:10px,@c:red){
+	border-width: @wt;
+	border-color: transparent transparent transparent @c;
+}
+// .box5{
+// 	.triangle(top,@wt;,@c:red);
+// }
+.list{
+	width:100%;
+	height: 150px;
+	li{
+		border: 1px solid #000;
+		list-style: none;
+		margin-bottom: 20px;
+		span{
+			font-size: 18px;
+			color: #f10;
+		}
+		a{
+			color: #000;
+			font-size: 18px;
+		// & 表示的是上一个标签
+			&:hover{
+				color: #f10;
+			}
+		}
+		
+	}
+}
+//运算符前后各至少一个空格
+.fs(@s){
+	font-size: @s + 10px;
+	font-size: @s - 10px;
+
+	font-size: @s * 10px;
+
+	font-size: @s / 10px;
+
+}
+
+.setStyle(@attr,@val){
+	@{attr}:unit(@val,px);
+}
+.box6{
+	.setStyle(width,100);
+	.setStyle(height,100);
+	background: red;
+	.fs(20);
+
+}
+//box7 中的每个属性都加 important
+.box7{
+	.box1 !important;
+}
